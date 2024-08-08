@@ -61,3 +61,23 @@ Route::get("/namedRoute" , function(){
 Route::get("/posts/{slug}/{category}" , function(Request $request , string $slug , string $category){
     return redirect()->route("contact");
 })->whereAlphaNumeric(['slug'])->whereIn('category' , ['tech' , 'programming' , 'laravel' , 'php']);
+
+// ! group routes
+Route::group(["prefix" => "auth"] , function(){
+    Route::get("/forget-password" , function(){
+        return "hello forget password";
+    })->name("forget-password");
+});
+
+// ! group routes anther way
+Route::prefix("auth")->group(function(){
+    Route::get("/otp" , function(){
+        $otp = true;
+        if($otp)
+        {
+            // ? redirect user to named route
+            return redirect()->route("forget-password");
+        }
+        return redirect("/");
+    });
+});
