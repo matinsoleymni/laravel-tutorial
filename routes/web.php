@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -81,3 +82,12 @@ Route::prefix("auth")->group(function(){
         return redirect("/");
     });
 });
+
+// ! route call all method from controller
+Route::get("/posts/all" , [PostController::class , "all"]);
+
+// ! route call create method from controller
+Route::get("/posts/create" , [PostController::class , "create"]);
+
+// ! route call delete method from controller
+Route::get("/posts/{id}/delete" , [PostController::class , "delete"]);
