@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PhotosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -12,3 +13,6 @@ Route::get("/cars" , function(){
 Route::post("/cars" , function(Request $request){
     return response()->json(['code' => 200 , 'message' => $request->name ?? "benz"]);
 });
+
+// ! api resources controller
+Route::apiResource("photos" , PhotosController::class);

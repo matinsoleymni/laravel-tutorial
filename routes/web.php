@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -91,3 +92,14 @@ Route::get("/posts/create" , [PostController::class , "create"]);
 
 // ! route call delete method from controller
 Route::get("/posts/{id}/delete" , [PostController::class , "delete"]);
+
+// ! resources controller
+// Route::get("/cars" , [CarController::class , "index"]);
+// Route::get("/cars/create" , [CarController::class , "cerate"]);
+// Route::post("/cars" , [CarController::class , "store"]);
+// Route::get("/cars/edit/{id}" , [CarController::class , "edit"]);
+// Route::match(['put' , 'patch'] , "/cars/edit/{id}" , [CarController::class , "update"]);
+// Route::delete("/cars/{id}" , [CarController::class , "destroy"])->name("cars.delete");
+
+// ! resources controller with recourse method
+Route::resource("cars" , CarController::class);
