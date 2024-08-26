@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ServerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -103,3 +104,6 @@ Route::get("/posts/{id}/delete" , [PostController::class , "delete"]);
 
 // ! resources controller with recourse method
 Route::resource("cars" , CarController::class);
+
+// ! single action controller with middleware
+Route::any("/server" , ServerController::class)->middleware(["age"]);
