@@ -17,4 +17,9 @@ class Post extends Model
         'published_at',
         'user_id'
     ];
+
+    public function writer()
+    {
+        return $this->belongsTo(User::class , "user_id" , "id");
+    }
 }

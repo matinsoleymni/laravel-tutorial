@@ -33,7 +33,9 @@ Route::get("/posts/{id?}" , function($id = 0){
     if($id)
     {
         $post = Post::findOrFail($id);
-        dd($post);
+        // $user = User::find($post->user_id);
+        // dd($post , $user);
+        dd($post , $post->writer);
     }
 
     $posts = Post::all();
@@ -44,4 +46,15 @@ Route::get("/posts/{id?}" , function($id = 0){
 Route::get("/posts/select/{title}" , function($title){
     $post = Post::where("title" , $title)->where("user_id" , "=" , 1)->firstOrFail();
     dd($post);
+});
+
+Route::get("/users/{id?}" , function($id = 0){
+    if($id)
+    {
+        $user = User::findOrFail($id);
+        dd($user->posts);
+    }
+
+    $users = User::all();
+    dd($users);
 });
